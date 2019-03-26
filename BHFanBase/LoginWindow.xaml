@@ -1,0 +1,39 @@
+﻿<Page x:Class="BHFanBase.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Converter="clr-namespace:BHFanBase.ViewModel"
+        mc:Ignorable="d"
+        Name="Login"
+        Title="LoginWindow" Height="450" Width="800"
+        DataContext="{Binding Login, Source={StaticResource Locator}}">
+    <Grid>
+        <Grid.Resources>
+            <Converter:LoginConverter x:Key="loginConverter" />
+        </Grid.Resources>
+        <TextBox x:Name="loginInput" HorizontalAlignment="Left" Height="23" 
+                 Margin="70.838,347.195,0,0" TextWrapping="Wrap" VerticalAlignment="Top" 
+                 Width="229.827" RenderTransformOrigin="0.5,0.5" BorderThickness="0,0,0,1" 
+                 BorderBrush="#FFEA0B0B" Text="{Binding InputParams.username}"/>
+        <TextBox x:Name="passwordInput" HorizontalAlignment="Left" Height="23" 
+                 Margin="324.51,347.195,0,0" TextWrapping="Wrap" VerticalAlignment="Top" 
+                 Width="211.361" BorderThickness="0,0,0,1" BorderBrush="#FFEA0B0B"
+                 Text="{Binding InputParams.password}"/>
+        <Label x:Name="label" Content="Username:" HorizontalAlignment="Left" 
+               Margin="70.838,316.165,0,0" VerticalAlignment="Top"/>
+        <Label Content="Password:" HorizontalAlignment="Left" Margin="324.51,316.165,0,0" 
+               VerticalAlignment="Top" />
+        <Button x:Name="button" Content="Login" HorizontalAlignment="Left" 
+                Margin="641.356,350.235,0,0" VerticalAlignment="Top" Width="75" 
+                RenderTransformOrigin="0.492,0.552" Background="#552F63D1" 
+                HorizontalContentAlignment="Center" Command="{Binding LoginCommand}">
+            <Button.CommandParameter>
+                <MultiBinding Converter="{StaticResource loginConverter}">
+                    <Binding Path="Text" ElementName="loginInput"/>
+                    <Binding Path="Text" ElementName="passwordInput" />
+                </MultiBinding>
+            </Button.CommandParameter>
+        </Button>
+    </Grid>
+</Page>
