@@ -79,11 +79,13 @@
     <Compile Include="Model\DataService.cs" />
     <Compile Include="Model\IBHNavigationService.cs" />
     <Compile Include="Model\IDataService.cs" />
-    <Compile Include="Navigator.xaml.cs">
-      <DependentUpon>Navigator.xaml</DependentUpon>
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\MenuItemDataService.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\SideMenuViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Page Include="LoginWindow.xaml">
       <SubType>Designer</SubType>
@@ -101,7 +103,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Navigator.xaml">
+    <Page Include="MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -43,13 +43,14 @@ namespace BHFanBase.ViewModel
 
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<LoginViewModel>();
+            SimpleIoc.Default.Register<SideMenuViewModel>();
         }
 
         private static void SetupNavigation()
         {
             BHNavigationService bHNavigationService = new BHNavigationService();
             bHNavigationService.Configure("Login", new Uri("../LoginWindow.xaml", UriKind.Relative));
-            bHNavigationService.Configure("Main", new Uri("../Navigator.xaml", UriKind.Relative));
+            bHNavigationService.Configure("Main", new Uri("../MainPage.xaml", UriKind.Relative));
             SimpleIoc.Default.Register<IBHNavigationService>(() => bHNavigationService);
         }
 
@@ -72,6 +73,14 @@ namespace BHFanBase.ViewModel
             get
             {
                 return ServiceLocator.Current.GetInstance<LoginViewModel>();
+            }
+        }
+
+        public SideMenuViewModel SideMenu
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<SideMenuViewModel>();
             }
         }
 

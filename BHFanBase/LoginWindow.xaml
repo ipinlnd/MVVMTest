@@ -6,6 +6,7 @@
         xmlns:Converter="clr-namespace:BHFanBase.ViewModel"
         mc:Ignorable="d"
         Name="Login"
+        ShowsNavigationUI="False"
         Title="LoginWindow" Height="450" Width="800"
         DataContext="{Binding Login, Source={StaticResource Locator}}">
     <Grid>

@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using BHFanBase.Model;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace BHFanBase.ViewModel
 {
@@ -8,6 +9,8 @@ namespace BHFanBase.ViewModel
         private readonly IDataService _dataService;
 
         public const string WelcomeTitlePropertyName = "WelcomeTitle";
+
+        private string GeneralWelcome;
 
         private string _welcomeTitle = string.Empty;
 
@@ -25,6 +28,11 @@ namespace BHFanBase.ViewModel
         
         public MainViewModel(IDataService dataService, IBHNavigationService bHNavigation)
         {
+            GeneralWelcome = "";
+            Messenger.Default.Register<string>(this, message =>
+            {
+                WelcomeTitle = GeneralWelcome + " " + message;
+            });
             _dataService = dataService;
             _dataService.GetData(
                 (item, error) =>
@@ -35,6 +43,7 @@ namespace BHFanBase.ViewModel
                     }
 
                     WelcomeTitle = item.Title;
+                    GeneralWelcome = item.Title;
                 });
         }
     }

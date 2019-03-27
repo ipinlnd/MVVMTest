@@ -3,11 +3,9 @@
 namespace BHFanBase
 {
 
-    public partial class Navigator : Page
+    public partial class MainPage : Page
     {
-        public static Frame MainFrame;
-
-        public Navigator()
+        public MainPage()
         {
             InitializeComponent();
         }

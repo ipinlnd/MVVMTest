@@ -1,0 +1,60 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BHFanBase"
+      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" x:Class="BHFanBase.MainPage"
+      mc:Ignorable="d" 
+      Height="450" Width="800"
+      ShowsNavigationUI="False"
+      Title="MainPage">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Skins/MainSkin.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <DataTemplate x:Key="menuListItemTemplate">
+                <Label Content="{Binding title}" Foreground="Black" VerticalAlignment="Center">
+                </Label>
+            </DataTemplate>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        
+        <Grid x:Name="LayoutRoot" Grid.Column="1"
+          DataContext="{Binding Main, Source={StaticResource Locator}}" >
+
+            <TextBlock FontSize="36"
+                   FontWeight="Bold"
+                   Foreground="Purple"
+                   Text="{Binding WelcomeTitle}"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   TextWrapping="Wrap" />
+        </Grid>
+        
+        <DockPanel Grid.Column="0" DataContext="{Binding SideMenu, Source={StaticResource Locator}}">
+            <ListBox 
+                x:Name="MFListbox"
+                ItemsSource="{Binding ListBoxItems}" 
+                     ItemTemplate="{StaticResource menuListItemTemplate}"
+                     >
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <i:InvokeCommandAction Command="{Binding menuItemChanged}" 
+                                               CommandParameter="{Binding ElementName=MFListbox, Path=SelectedItem}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </ListBox>
+        </DockPanel>
+
+        
+    </Grid>
+</Page>

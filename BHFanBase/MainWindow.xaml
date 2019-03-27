@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:ignore="http://www.galasoft.ch/ignore"
         mc:Ignorable="d ignore"
-        Height="450" Width="800"
+        Height="500" Width="800"
         Title="MVVM Light Application">
 
     <Frame Name="MainFrame" Source="./LoginWindow.xaml" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
